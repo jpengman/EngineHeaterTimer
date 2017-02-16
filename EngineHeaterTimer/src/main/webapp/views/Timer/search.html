@@ -1,0 +1,145 @@
+<div class="form-horizontal">
+    <h3>Create a new Timer</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/Timers/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for Timers</h3>
+    <form id="TimerSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="active" class="col-sm-2 control-label">Active</label>
+        <div class="col-sm-10">
+            <select id="active" name="active" class="form-control" ng-model="search.active" ng-options="a as a for a in activeList">
+                <option value="">Choose a Active</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="friday" class="col-sm-2 control-label">Friday</label>
+        <div class="col-sm-10">
+            <select id="friday" name="friday" class="form-control" ng-model="search.friday" ng-options="f as f for f in fridayList">
+                <option value="">Choose a Friday</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="monday" class="col-sm-2 control-label">Monday</label>
+        <div class="col-sm-10">
+            <select id="monday" name="monday" class="form-control" ng-model="search.monday" ng-options="m as m for m in mondayList">
+                <option value="">Choose a Monday</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="saturday" class="col-sm-2 control-label">Saturday</label>
+        <div class="col-sm-10">
+            <select id="saturday" name="saturday" class="form-control" ng-model="search.saturday" ng-options="s as s for s in saturdayList">
+                <option value="">Choose a Saturday</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="sunday" class="col-sm-2 control-label">Sunday</label>
+        <div class="col-sm-10">
+            <select id="sunday" name="sunday" class="form-control" ng-model="search.sunday" ng-options="s as s for s in sundayList">
+                <option value="">Choose a Sunday</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="thursday" class="col-sm-2 control-label">Thursday</label>
+        <div class="col-sm-10">
+            <select id="thursday" name="thursday" class="form-control" ng-model="search.thursday" ng-options="t as t for t in thursdayList">
+                <option value="">Choose a Thursday</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="time" class="col-sm-2 control-label">Time</label>
+        <div class="col-sm-10">
+            <input id="time" name="time" class="form-control" type="text" ng-model="search.time" placeholder="Enter the Timer Time"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="tuesday" class="col-sm-2 control-label">Tuesday</label>
+        <div class="col-sm-10">
+            <select id="tuesday" name="tuesday" class="form-control" ng-model="search.tuesday" ng-options="t as t for t in tuesdayList">
+                <option value="">Choose a Tuesday</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="wednesday" class="col-sm-2 control-label">Wednesday</label>
+        <div class="col-sm-10">
+            <select id="wednesday" name="wednesday" class="form-control" ng-model="search.wednesday" ng-options="w as w for w in wednesdayList">
+                <option value="">Choose a Wednesday</option>
+            </select>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Active</th>
+                    <th>Friday</th>
+                    <th>Monday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                    <th>Thursday</th>
+                    <th>Time</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in filteredResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.active}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.friday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.monday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.saturday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.sunday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.thursday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.time}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.tuesday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.wednesday}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

@@ -1,0 +1,94 @@
+<header ng-switch on="$location.path().indexOf('/Timers/new') > -1">
+    <h3 ng-switch-when="true">Create a new Timer</h3>
+    <h3 ng-switch-when="false">View or edit Timer</h3>
+</header>
+<form id="TimerForm" name="TimerForm" class="form-horizontal" role="form">
+    
+    <div class="form-group" ng-class="{'has-error': TimerForm.active.$invalid}">
+        <label for="active" class="col-sm-2 control-label">Active</label>
+        <div id="activeControls" class="col-sm-10">
+            <input id="active" name="active" type="checkbox" class="checkbox" ng-model="timer.active" placeholder="Enter the Timer Active"></input>
+            <span class="help-block error" ng-show="TimerForm.active.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.active.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.friday.$invalid}">
+        <label for="friday" class="col-sm-2 control-label">Friday</label>
+        <div id="fridayControls" class="col-sm-10">
+            <input id="friday" name="friday" type="checkbox"  class="checkbox" ng-model="timer.friday" placeholder="Enter the Timer Friday"></input>
+            <span class="help-block error" ng-show="TimerForm.friday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.friday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.monday.$invalid}">
+        <label for="monday" class="col-sm-2 control-label">Monday</label>
+        <div id="mondayControls" class="col-sm-10">
+            <input id="monday" name="monday" type="checkbox"  class="checkbox" ng-model="timer.monday" placeholder="Enter the Timer Monday"></input>
+            <span class="help-block error" ng-show="TimerForm.monday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.monday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.saturday.$invalid}">
+        <label for="saturday" class="col-sm-2 control-label">Saturday</label>
+        <div id="saturdayControls" class="col-sm-10">
+            <input id="saturday" name="saturday" type="checkbox"  class="checkbox" ng-model="timer.saturday" placeholder="Enter the Timer Saturday"></input>
+            <span class="help-block error" ng-show="TimerForm.saturday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.saturday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.sunday.$invalid}">
+        <label for="sunday" class="col-sm-2 control-label">Sunday</label>
+        <div id="sundayControls" class="col-sm-10">
+            <input id="sunday" name="sunday" type="checkbox"  class="checkbox" ng-model="timer.sunday" placeholder="Enter the Timer Sunday"></input>
+            <span class="help-block error" ng-show="TimerForm.sunday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.sunday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.thursday.$invalid}">
+        <label for="thursday" class="col-sm-2 control-label">Thursday</label>
+        <div id="thursdayControls" class="col-sm-10">
+            <input id="thursday" name="thursday" type="checkbox"  class="checkbox" ng-model="timer.thursday" placeholder="Enter the Timer Thursday"></input>
+            <span class="help-block error" ng-show="TimerForm.thursday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.thursday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.time.$invalid}">
+        <label for="time" class="col-sm-2 control-label">Time</label>
+        <div id="timeControls" class="col-sm-10">
+            <input id="time" name="time" type="text" class="form-control" ng-model="timer.time" placeholder="Enter the Timer Time"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.tuesday.$invalid}">
+        <label for="tuesday" class="col-sm-2 control-label">Tuesday</label>
+        <div id="tuesdayControls" class="col-sm-10">
+            <input id="tuesday" name="tuesday" type="checkbox"  class="checkbox" ng-model="timer.tuesday" placeholder="Enter the Timer Tuesday"></input>
+            <span class="help-block error" ng-show="TimerForm.tuesday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.tuesday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TimerForm.wednesday.$invalid}">
+        <label for="wednesday" class="col-sm-2 control-label">Wednesday</label>
+        <div id="wednesdayControls" class="col-sm-10">
+            <input id="wednesday" name="wednesday" type="checkbox" class="checkbox" ng-model="timer.wednesday" placeholder="Enter the Timer Wednesday"></input>
+            <span class="help-block error" ng-show="TimerForm.wednesday.$error.required">required</span> 
+            <span class="help-block error" ng-show="TimerForm.wednesday.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveTimer" name="saveTimer" class="btn btn-primary" ng-disabled="isClean() || TimerForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteTimer" name="deleteTimer" class="btn btn-danger" ng-show="timer.timerId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>
