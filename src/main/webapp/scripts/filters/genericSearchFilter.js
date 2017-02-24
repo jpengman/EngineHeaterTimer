@@ -43,7 +43,15 @@ angular.module('engineHeaterTimer').filter('searchFilter', function() {
                     if (actual == null) {
                         flag = false;
                     } else if (angular.isObject(expected)) {
-                        flag = flag && matchObjectProperties(expected, actual);
+                    	//Fix for dropdowns with both value and label 
+                    	if(!angular.isObject(actual)){
+                            var expectedValue = expected["value"]
+                            flag = flag && (actual.toString().indexOf(expectedValue.toString()) != -1);
+                        }else{
+                            flag = flag && matchObjectProperties(expected, actual);
+                        }
+                    	// used to be: flag = flag && matchObjectProperties(expected, actual);
+                    	
                     } else {
                         flag = flag && (actual.toString().indexOf(expected.toString()) != -1);
                     }

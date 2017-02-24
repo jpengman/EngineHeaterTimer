@@ -56,8 +56,8 @@ angular.module('engineHeaterTimer').controller('EditTimerController', function($
     };
     
     $scope.activeList = [
-        "true",
-        "false"
+        "Show only active",
+        "Show only inactive"
     ];
     $scope.fridayList = [
         "true",

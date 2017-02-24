@@ -3,7 +3,7 @@
 angular.module('engineHeaterTimer',['ngRoute','ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-      .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
+      .when('/',{templateUrl:'views/Timer/search.html',controller:'SearchTimerController'})
       .when('/Settings',{templateUrl:'views/Setting/search.html',controller:'SearchSettingController'})
       .when('/Settings/new',{templateUrl:'views/Setting/detail.html',controller:'NewSettingController'})
       .when('/Settings/edit/:SettingId',{templateUrl:'views/Setting/detail.html',controller:'EditSettingController'})

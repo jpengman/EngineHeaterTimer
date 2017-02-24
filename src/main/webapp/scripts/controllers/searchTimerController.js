@@ -17,9 +17,13 @@ angular.module('engineHeaterTimer').controller('SearchTimerController', function
         }
         return max;
     };
-    $scope.activeList = [
-        "true",
-        "false"
+    $scope.activeList = [{
+    	value:"true",
+    	 label:"Show only active"
+    		 },{
+    			 value:"false",
+    			 label:"Show only inactive"
+    		 }
     ];
     $scope.fridayList = [
         "true",

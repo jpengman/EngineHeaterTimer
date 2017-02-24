@@ -5,8 +5,8 @@ angular.module('engineHeaterTimer').controller('NewTimerController', function ($
     $scope.timer = $scope.timer || {};
     
     $scope.activeList = [
-        "true",
-        "false"
+    	 "Show only active",
+         "Show only inactive"
     ];
 
     $scope.fridayList = [
