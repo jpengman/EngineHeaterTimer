@@ -25,6 +25,52 @@ angular.module('engineHeaterTimer').filter('searchFilter', function() {
         }
         return flag;
     }
+    
+    function getRepeatDesc(result) {
+    	if(result['monday'] && result['tuesday'] && result['wednesday'] && result['thursday'] && result['friday'] && result['saturday'] && result['sunday']){
+    		return 'Everyday';
+    	}
+    	else if(!result['monday'] && !result['tuesday'] && !result['wednesday'] && !result['thursday'] && !result['friday'] && !result['saturday'] && !result['sunday']){
+    		return 'No Repeat';
+    	}
+    	else if(result['monday'] && result['tuesday'] && result['wednesday'] && result['thursday'] && result['friday']){
+    		var desc = 'Weekdays';
+    		if(result['saturday']){
+        		desc = desc+',Saturdays';
+        	}   
+        	if(result['sunday']){
+        		desc = desc+',Sundays';
+        	}   
+    		return desc;
+    	}
+
+    	var desc = '';
+    	if(result['monday']){
+    		desc = desc+'Mondays,';
+    	}  
+    	if(result['tuesday']){
+    		desc = desc+'Tuesdays,';
+    	}   
+    	if(result['wednesday']){
+    		desc = desc+'Wednesdays,';
+    	}   
+    	if(result['thursday']){
+    		desc = desc+'Thursdays,';
+    	}   
+    	if(result['friday']){
+    		desc = desc+'Fridays,';
+    	}   
+    	if(result['saturday'] && result['sunday']){
+    		return desc + 'Weekends'
+    	}
+    	if(result['saturday']){
+    		desc = desc+'Saturdays,';
+    	}   
+    	if(result['sunday']){
+    		desc = desc+'Sundays,';
+    	}   
+    	return desc.substring(0, desc.length - 1);
+    }
 
     return function(results, scope) {
 
@@ -58,7 +104,10 @@ angular.module('engineHeaterTimer').filter('searchFilter', function() {
                 }
             }
             if (flag == true) {
-                scope.filteredResults.push(result);
+            	if(!angular.isUndefined(result['monday'])){
+            		result['repeat'] = getRepeatDesc(result)
+            	}
+            	scope.filteredResults.push(result);
             }
         }
         scope.numberOfPages();

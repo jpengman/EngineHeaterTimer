@@ -55,38 +55,5 @@ angular.module('engineHeaterTimer').controller('EditTimerController', function($
         $scope.timer.$remove(successCallback, errorCallback);
     };
     
-    $scope.activeList = [
-        "Show only active",
-        "Show only inactive"
-    ];
-    $scope.fridayList = [
-        "true",
-        "false"
-    ];
-    $scope.mondayList = [
-        "true",
-        "false"
-    ];
-    $scope.saturdayList = [
-        "true",
-        "false"
-    ];
-    $scope.sundayList = [
-        "true",
-        "false"
-    ];
-    $scope.thursdayList = [
-        "true",
-        "false"
-    ];
-    $scope.tuesdayList = [
-        "true",
-        "false"
-    ];
-    $scope.wednesdayList = [
-        "true",
-        "false"
-    ];
-    
     $scope.get();
 });

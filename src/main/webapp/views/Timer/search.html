@@ -8,7 +8,7 @@
 </div>
 <hr/>
 <div>
-    <h3>Search for Timers</h3>
+    <h3>List Timers</h3>
     <form id="TimerSearch" class="form-horizontal">
         
     <div class="form-group">
@@ -27,28 +27,17 @@
         <table class="table table-responsive table-bordered table-striped clearfix">
             <thead>
                 <tr>
-                    <th>Active</th>
-                    <th>Friday</th>
-                    <th>Monday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                    <th>Thursday</th>
-                    <th>Time</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
+                    <th width="25px"></th>
+                    <th style="width:75px;white-space_nowrap">Time</th>
+                    <th>Repeat</th>
                 </tr>
             </thead>
             <tbody id="search-results-body">
                 <tr ng-repeat="result in filteredResults | startFrom:currentPage*pageSize | limitTo:pageSize">
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.active}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.friday}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.monday}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.saturday}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.sunday}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.thursday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}"><input id="active" name="active" type="checkbox" class="checkbox"
+				ng-model="result.active"></input></a></td>
                     <td><a href="#/Timers/edit/{{result.timerId}}">{{result.time}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.tuesday}}</a></td>
-                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.wednesday}}</a></td>
+                    <td><a href="#/Timers/edit/{{result.timerId}}">{{result.repeat}}</a></td>
                 </tr>
             </tbody>
         </table>

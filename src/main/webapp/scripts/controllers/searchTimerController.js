@@ -25,35 +25,7 @@ angular.module('engineHeaterTimer').controller('SearchTimerController', function
     			 label:"Show only inactive"
     		 }
     ];
-    $scope.fridayList = [
-        "true",
-        "false"
-    ];
-    $scope.mondayList = [
-        "true",
-        "false"
-    ];
-    $scope.saturdayList = [
-        "true",
-        "false"
-    ];
-    $scope.sundayList = [
-        "true",
-        "false"
-    ];
-    $scope.thursdayList = [
-        "true",
-        "false"
-    ];
-    $scope.tuesdayList = [
-        "true",
-        "false"
-    ];
-    $scope.wednesdayList = [
-        "true",
-        "false"
-    ];
-
+   
     $scope.performSearch = function() {
         $scope.searchResults = TimerResource.queryAll(function(){
             $scope.filteredResults = $filter('searchFilter')($scope.searchResults, $scope);
