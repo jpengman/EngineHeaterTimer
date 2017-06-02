@@ -1,25 +1,25 @@
-<header ng-switch on="$location.path().indexOf('/Timers/new') > -1">
-	<h3 ng-switch-when="true">Create a new Timer</h3>
-	<h3 ng-switch-when="false">Edit Timer</h3>
+<header data-ng-switch="$location.path().indexOf('/Timers/new') > -1">
+	<h3 data-ng-switch-when="true">Create a new Timer</h3>
+	<h3 data-ng-switch-when="false">Edit Timer</h3>
 </header>
 <form id="TimerForm" name="TimerForm" class="form-horizontal"
 	role="form">
 
 	<div class="form-group"
-		ng-class="{'has-error': TimerForm.active.$invalid}">
+		data-ng-class="{'has-error': TimerForm.active.$invalid}">
 		<label for="active" class="col-sm-2 control-label">Active</label>
 		<div id="activeControls" class="col-sm-10">
 			<input id="active" name="active" type="checkbox" class="checkbox"
-				ng-model="timer.active" placeholder="Enter the Timer Active"></input>
+				data-ng-model="timer.active" placeholder="Enter the Timer Active"></input>
 		</div>
 	</div>
 
 	<div class="form-group"
-		ng-class="{'has-error': TimerForm.time.$invalid}">
+		data-ng-class="{'has-error': TimerForm.time.$invalid}">
 		<label for="time" class="col-sm-2 control-label">Time</label>
 		<div id="timeControls" class="col-sm-10">
 			<input id="time" name="time" type="text" class="form-control"
-				ng-model="timer.time" placeholder="Enter the Timer Time"></input>
+				data-ng-model="timer.time" placeholder="Enter the Timer Time"></input>
 		</div>
 	</div>
 
@@ -39,34 +39,34 @@
 				<div class="row">
 					<div class="col-xs-1">
 						<input id="monday" name="monday" type="checkbox" class="checkbox"
-							ng-model="timer.monday" placeholder="Monday"></input>
+							data-ng-model="timer.monday" placeholder="Monday"></input>
 					</div>
 					<div class="col-xs-1">
 						<input id="tuesday" name="tuesday" type="checkbox"
-							class="checkbox" ng-model="timer.tuesday" placeholder="Tuesday"></input>
+							class="checkbox" data-ng-model="timer.tuesday" placeholder="Tuesday"></input>
 					</div>
 					<div class="col-xs-1">
 						<input id="wednesday" name="wednesday" type="checkbox"
-							class="checkbox" ng-model="timer.wednesday"
+							class="checkbox" data-ng-model="timer.wednesday"
 							placeholder="wednesday"></input>
 					</div>
 					<div class="col-xs-1">
 						<input id="thursday" name="thursday" type="checkbox"
-							class="checkbox" ng-model="timer.thursday"
+							class="checkbox" data-ng-model="timer.thursday"
 							placeholder="Enter the Timer Thursday"></input>
 					</div>
 					<div class="col-xs-1">
 						<input id="friday" name="friday" type="checkbox" class="checkbox"
-							ng-model="timer.friday" placeholder="Enter the Timer Friday"></input>
+							data-ng-model="timer.friday" placeholder="Enter the Timer Friday"></input>
 					</div>
 					<div class="col-xs-1">
 						<input id="saturday" name="saturday" type="checkbox"
-							class="checkbox" ng-model="timer.saturday"
+							class="checkbox" data-ng-model="timer.saturday"
 							placeholder="Enter the Timer Saturday"></input>
 					</div>
 					<div class="col-xs-1">
 						<input id="sunday" name="sunday" type="checkbox" class="checkbox"
-							ng-model="timer.sunday" placeholder="Enter the Timer Sunday"></input>
+							data-ng-model="timer.sunday" placeholder="Enter the Timer Sunday"></input>
 					</div>
 
 				</div>
@@ -80,15 +80,15 @@
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<button id="saveTimer" name="saveTimer" class="btn btn-primary"
-				ng-disabled="isClean() || TimerForm.$invalid" ng-click="save()">
+				data-ng-disabled="isClean() || TimerForm.$invalid" data-ng-click="save()">
 				<span class="glyphicon glyphicon-ok-sign"></span> Save
 			</button>
 			<button id="cancel" name="cancel" class="btn btn-default"
-				ng-click="cancel()">
+				data-ng-click="cancel()">
 				<span class="glyphicon glyphicon-remove-sign"></span> Cancel
 			</button>
 			<button id="deleteTimer" name="deleteTimer" class="btn btn-danger"
-				ng-show="timer.timerId" ng-click="remove()">
+				data-ng-show="timer.timerId" data-ng-click="remove()">
 				<span class="glyphicon glyphicon-trash"></span> Delete
 			</button>
 		</div>

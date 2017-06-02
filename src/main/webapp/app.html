@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="engineHeaterTimer">
+<html lang="en" data-ng-app="engineHeaterTimer">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,13 +31,13 @@
                 <!-- sidebar -->
                 <div class="col-xs-6 col-sm-3 well sidebar-offcanvas">
                         <img class="hidden-xs img-responsive" src="img/clock.svg"></img>
-                 <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
+                 <nav class="sidebar-nav" data-ng-controller="NavController" role="navigation">
                         <div id="sidebar-entries" class="list-group">
-                      		<a class="list-group-item" ng-class="{active: matchesRoute('Timers')}" href="#/Timers" data-toggle="offcanvas">Timers</a>
-                      		<a class="list-group-item" ng-class="{active: matchesRoute('Settings')}" href="#/Settings" data-toggle="offcanvas">Settings</a>
+                      		<a class="list-group-item" data-ng-class="{active: matchesRoute('Timers')}" href="#/Timers" data-toggle="offcanvas">Timers</a>
+                      		<a class="list-group-item" data-ng-class="{active: matchesRoute('Settings')}" href="#/Settings" data-toggle="offcanvas">Settings</a>
                         </div>
                     </nav>
-                    <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
+                    <nav class="sidebar-nav" data-ng-controller="NavController" role="navigation">
                         <div id="sidebar-links" class="list-group">
                       		<a class="list-group-item" href="../OWManager" data-toggle="offcanvas">OWManager</a>
                         </div>
@@ -45,11 +45,11 @@
                 </div>
                 <!-- main area-->
                 <div class="col-sm-offset-1 col-xs-12 col-sm-8 well mainarea">
-                    <div ng-controller="FlashController" class="alert alert-dismissible" ng-class="'alert-' + flash.getMessage().cssClass" role="alert" ng-show="showAlert">
-                        <button type="button" class="close" ng-click="hideAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div data-ng-controller="FlashController" class="alert alert-dismissible" data-ng-class="'alert-' + flash.getMessage().cssClass" role="alert" data-ng-show="showAlert">
+                        <button type="button" class="close" data-ng-click="hideAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         {{flash.getMessage().text}}
                     </div>
-                    <div id="main" ng-view>
+                    <div id="main" data-ng-view>
                     </div>
                 </div>
             </div>

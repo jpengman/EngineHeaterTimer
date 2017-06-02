@@ -2,7 +2,7 @@
     <h3>Create a new Timer</h3>
     <div class="form-group">
         <div class="col-md-offset-2 col-sm-2">
-            <a id="Create" name="Create" class="btn btn-primary" href="#/Timers/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+            <a id="Create" class="btn btn-primary" href="#/Timers/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
     <div class="form-group">
         <label for="active" class="col-sm-2 control-label">Filter:</label>
         <div class="col-sm-10"><!-- a as a for a in fridayList  -->
-            <select id="active" name="active" class="form-control" ng-model="search.active" ng-options="a as a.label for a in activeList track by a.value" ng-change="performSearch()">
+            <select id="active" class="form-control" data-ng-model="search.active" data-ng-options="a as a.label for a in activeList track by a.value" data-ng-change="performSearch()">
                 <option value="">Show both active and inactive</option>
             </select>
         </div>
@@ -33,9 +33,9 @@
                 </tr>
             </thead>
             <tbody id="search-results-body">
-                <tr ng-repeat="result in filteredResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                <tr data-ng-repeat="result in filteredResults | startFrom:currentPage*pageSize | limitTo:pageSize">
                     <td><a href="#/Timers/edit/{{result.timerId}}"><input id="active" name="active" type="checkbox" class="checkbox"
-				ng-model="result.active"></input></a></td>
+				data-ng-model="result.active"></input></a></td>
                     <td><a href="#/Timers/edit/{{result.timerId}}">{{result.time}}</a></td>
                     <td><a href="#/Timers/edit/{{result.timerId}}">{{result.repeat}}</a></td>
                 </tr>
@@ -44,14 +44,14 @@
     </div>
 
         <ul class="pagination pagination-centered">
-        <li ng-class="{disabled:currentPage == 0}">
-            <a id="prev" href ng-click="previous()">«</a>
+        <li data-ng-class="{disabled:currentPage == 0}">
+            <a id="prev" data-ng-click="previous()">«</a>
         </li>
-        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
-            <a href ng-bind="n + 1">1</a>
+        <li data-ng-repeat="n in pageRange" data-ng-class="{active:currentPage == n}" data-ng-click="setPage(n)">
+            <a  data-ng-bind="n + 1">1</a>
         </li>
-        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
-            <a id="next" href ng-click="next()">»</a>
+        <li data-ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" data-ng-click="next()">»</a>
         </li>
     </ul>
 
