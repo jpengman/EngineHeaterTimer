@@ -25,18 +25,18 @@ public class TriggerEndpoint {
 	private static final String EXTRA_TIME = "extraTime";
 	private static final String MIN_TIME = "minTime";
 	private static final String MAX_TIME = "maxTime";
-	private static final String MAX_TIME_AT_TEMP = "maxTImeAtTemp";
+	private static final String MAX_TIME_AT_TEMP = "maxTimeAtTemp";
 
 	@PersistenceContext(unitName = "EngineHeaterTimer-persistence-unit")
 	private EntityManager em;
 
 	@GET
 	@Produces("application/json")
-	public boolean getState() {
+	public String getState() {
 		Map<String, Integer> settings = loadSettings();
 		long runningTime = getRunningTime(settings);
 		if (runningTime == 0) {
-			return false;
+			return "off";
 		}
 		LocalTime from = LocalTime.now().minusMinutes(settings.get(EXTRA_TIME));
 		LocalTime to = LocalTime.now().plusMinutes(runningTime);
@@ -48,7 +48,7 @@ public class TriggerEndpoint {
 				state = true;
 			}
 		}
-		return state;
+		return state ? "on" : "off";
 	}
 
 	@GET
