@@ -223,8 +223,9 @@ public class TriggerEndpoint {
 		UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("web", "Hemlig123!");
 		provider.setCredentials(AuthScope.ANY, credentials);
 
+		
 		CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultCredentialsProvider(provider).build();
-
+		
 		HttpGet httpget = new HttpGet("http://localhost:8080/OWManager-0.0.1-SNAPSHOT/rest/data/temperature/14/");
 		CloseableHttpResponse response = httpclient.execute(httpget);
 		JSONParser jsonParser = new JSONParser();
