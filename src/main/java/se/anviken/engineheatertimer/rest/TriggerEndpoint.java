@@ -24,11 +24,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -215,8 +219,12 @@ public class TriggerEndpoint {
 
 	private Double getOutsideTemperature()
 			throws ClientProtocolException, IOException, UnsupportedOperationException, ParseException {
+		CredentialsProvider provider = new BasicCredentialsProvider();
+		UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("web", "Hemlig123!");
+		provider.setCredentials(AuthScope.ANY, credentials);
 
-		CloseableHttpClient httpclient = HttpClients.createDefault();
+		CloseableHttpClient httpclient = HttpClientBuilder.create().setDefaultCredentialsProvider(provider).build();
+
 		HttpGet httpget = new HttpGet("http://localhost:8080/OWManager-0.0.1-SNAPSHOT/rest/data/temperature/14/");
 		CloseableHttpResponse response = httpclient.execute(httpget);
 		JSONParser jsonParser = new JSONParser();
